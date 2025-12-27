@@ -134,7 +134,6 @@ This repository covers infrastructure-level components only:
 ---
 
 ## Notes
-- ZIP files are tracked using **Git LFS**
 - ARM exports reflect the deployed state at the time of submission
-- Templates may require parameter review before reuse
+- Templates may require to be tempred before being used.
 - Repository structure is aligned with academic submission and demonstration requirements
