@@ -1,108 +1,139 @@
-# IT7099-Project-Cloud
-# Brain Tumor Detection – Azure Infrastructure Scripts
-
-This repository contains Azure-generated and manually refined scripts used for the **Brain Tumor Detection and Analysis System** project.  
-You use these scripts to deploy, configure, and manage cloud infrastructure components that support secure machine learning inference and web services.
-
-The focus of this repository is **infrastructure and deployment**, not application source code.
-
----
+# IT7099 – Azure Cloud Infrastructure Project
 
 ## Project Overview
-
-The project designs and implements a secure Azure cloud infrastructure to support:
+This project designs and implements a secure Azure cloud infrastructure to support:
 
 - Medical image (MRI) processing
 - Machine learning inference workloads
 - Secure access for healthcare users
-- Compliance with healthcare data protection standards
+- Compliance-aligned cloud architecture for healthcare environments
 
-The infrastructure follows a **private-by-default** design with controlled access using Azure networking and security services.
+The infrastructure follows a **private-by-default** design using Azure networking, security, and monitoring services. Public exposure is minimized and tightly controlled.
 
 ---
 
 ## Repository Purpose
-
 You use this repository to:
 
-- Store Azure CLI–generated scripts
+- Store exported Azure Resource Manager (ARM) templates
 - Track Infrastructure-as-Code (IaC) artifacts
-- Document deployment steps for reproducibility
-- Support academic evaluation and demonstration
+- Document networking and ML deployment steps
+- Support academic evaluation, demonstration, and audit
+- Provide appendix material for the thesis
 
-This repository supports documentation in the thesis **Implementation**, **Appendix**, and **System Documentation** sections.
+This repository directly supports the **Implementation**, **Appendix**, and **System Documentation** sections of the IT7099 thesis.
 
 ---
 
-## Contents
-
-<pre>
-├── azure-cli/
-│   ├── vnet-and-subnets.sh
-│   ├── vpn-gateway.sh
-│   ├── nsg-rules.sh
+## Repository Structure
+.
+├── docs/
+│ ├── ml/
+│ │ └── ML-Containerization-Azure-Deployment.md
+│ └── networking/
+│ └── Site-to-Site-VPN-Implementation.md
 │
-├── container-apps/
-│   ├── backend-containerapp.json
-│   ├── frontend-containerapp.json
+├── infra/
+│ └── arm-exports/
+│ ├── backend/
+│ ├── frontend/
+│ ├── management/
+│ ├── security/
+│ ├── networking/
+│ ├── ml/
+│ └── misc/
 │
-├── azure-ml/
-│   ├── workspace-setup.sh
-│   ├── endpoint-deploy.sh
-│
-├── storage/
-│   ├── blob-storage-setup.sh
-│
-├── scripts/
-│   ├── helper-commands.txt
+├── infrastructure/
+│ └── arm-templates/
+│ ├── containers/
+│ ├── monitoring/
+│ └── virtual-machines/
 │
 └── README.md
-</pre>
+.
 
 
+---
 
+## Folder Description
+
+### `docs/`
+Contains written technical documentation explaining key design and implementation steps.
+
+- **ml/**  
+  Documentation related to Azure Machine Learning containerization and deployment.
+- **networking/**  
+  Documentation for Site-to-Site VPN configuration and network connectivity.
+
+---
+
+### `infra/arm-exports/`
+Contains **ZIP exports of deployed Azure resources** generated directly from the Azure portal.
+
+These files represent the **actual deployed state** of the infrastructure and are stored for:
+
+- Audit and verification
+- Recovery reference
+- Academic documentation
+- Architecture validation
+
+Subfolders:
+- **backend/** – Backend application resource groups and services
+- **frontend/** – Frontend and web-facing infrastructure
+- **management/** – Monitoring, logging, and management resources
+- **security/** – Azure Firewall and security-related components
+- **networking/** – VNets, subnets, Bastion, VMSS, VPN-related resources
+- **ml/** – Azure Machine Learning workspace exports
+- **misc/** – Databases, storage accounts, test VMs, and supporting resources
+
+Each folder includes a `README.md` describing its contents.
+
+---
+
+### `infrastructure/arm-templates/`
+Contains ARM template ZIP files used for **deployment and redeployment** of selected Azure services.
+
+These templates represent **deployment artifacts**, not full environment exports.
+
+Subfolders:
+- **containers/** – Azure Container Apps deployments
+- **monitoring/** – Application Insights and monitoring components
+- **virtual-machines/** – VM and VM Scale Set deployments
 
 ---
 
 ## Technologies Used
 
 - Azure Virtual Network (VNet)
+- Azure Firewall
+- Azure VPN Gateway (Site-to-Site)
 - Azure Container Apps
 - Azure Machine Learning
 - Azure Blob Storage
-- Azure VPN Gateway (Site-to-Site)
+- Azure Virtual Machines and VM Scale Sets
+- Azure Resource Manager (ARM) templates
 - Azure CLI
-- JSON ARM templates and shell scripts
+- Git and Git LFS
 
 ---
 
 ## Deployment Scope
+This repository covers infrastructure-level components only:
 
-These scripts cover:
+- Virtual network and subnet design
+- Secure network isolation
+- Site-to-Site VPN connectivity
+- Firewall and security enforcement
+- Containerized application hosting
+- Machine learning infrastructure
+- Storage and database infrastructure
 
-- Virtual network and subnet creation
-- Private subnet isolation
-- Secure VPN connectivity
-- Containerized backend and frontend deployment
-- Machine learning endpoint provisioning
-- Secure storage configuration
-
-Application logic and ML model code are **out of scope** for this repository.
+**Application source code and ML model logic are intentionally out of scope.**
 
 ---
 
-## How to Use
-
-You are expected to already have:
-
-- An active Azure subscription
-- Azure CLI installed
-- Contributor access to the target resource group
-
-Basic usage example:
-
-```bash
-az login
-az account set --subscription <subscription-id>
-bash vnet-and-subnets.sh
-
+## Notes
+- ZIP files are tracked using **Git LFS**
+- ARM exports reflect the deployed state at the time of submission
+- Templates may require parameter review before reuse
+- Repository structure is aligned with academic submission and demonstration requirements
