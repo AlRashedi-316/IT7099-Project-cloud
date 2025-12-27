@@ -26,7 +26,7 @@ This repository directly supports the **Implementation**, **Appendix**, and **Sy
 ---
 
 ## Repository Structure
-.
+<pre>
 ├── docs/
 │ ├── ml/
 │ │ └── ML-Containerization-Azure-Deployment.md
@@ -50,7 +50,8 @@ This repository directly supports the **Implementation**, **Appendix**, and **Sy
 │ └── virtual-machines/
 │
 └── README.md
-.
+</pre>
+
 
 
 ---
